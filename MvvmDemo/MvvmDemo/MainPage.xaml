@@ -2,13 +2,22 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:MvvmDemo"
-             x:Class="MvvmDemo.MainPage">
-
+             x:Class="MvvmDemo.MainPage" 
+             Title="{Binding Path='{Binding Playlists.Count', StringFormat=' {0} Playlists'}}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Order="Primary" Clicked="Add"></ToolbarItem>
+        <ToolbarItem Text="Del" Order="Secondary"></ToolbarItem>
+    </ContentPage.ToolbarItems>
     <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+        <ListView x:Name="ListaPlaylists" 
+                  ItemSelected="ListaPlaylists_ItemSelected" 
+                  ItemsSource="{Binding Playlists}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Titulo}" Detail="{Binding Favorito, StringFormat='Favorito: {0}'}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </StackLayout>
 
 </ContentPage>
