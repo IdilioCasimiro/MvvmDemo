@@ -1,26 +1,18 @@
-﻿using MvvmDemo.Models;
-using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace MvvmDemo.ViewModels
 {
-    class PlaylistViewModel
+    public class PlaylistViewModel : BaseViewModel
     {
-        public ObservableCollection<Playlist> Playlists { get; private set; } = new ObservableCollection<Playlist>();
-        public Playlist PlaylistSeleccionada { get; set; }
+        public string Titulo { get; set; }
 
-        public void Adicionar()
+        private bool favorito;
+        public bool Favorito
         {
-            Playlists.Add(new Playlist()
-            {
-                Titulo = "Playlist " + Playlists.Count
-            });
-        }
-
-        public void SeleccionarItem(Playlist playlist)
-        {
-            PlaylistSeleccionada = playlist;
-            PlaylistSeleccionada.Favorito = !PlaylistSeleccionada.Favorito;
-            PlaylistSeleccionada = null;
+            get { return favorito; }
+            set { SetProperty(ref favorito, value); }
         }
     }
 }

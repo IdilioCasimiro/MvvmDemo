@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using MvvmDemo.ViewModels;
 using System.ComponentModel;
-using System.Text;
+using System.Runtime.CompilerServices;
 
 namespace MvvmDemo.Models
 {
-    public class Playlist : INotifyPropertyChanged
+    public class Playlist
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
         public string Titulo { get; set; }
-        private bool favorito;
-
         public bool Favorito { get; set; }
-
-        
     }
 }

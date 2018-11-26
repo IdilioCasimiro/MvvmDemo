@@ -5,12 +5,13 @@
              x:Class="MvvmDemo.MainPage" 
              Title="{Binding Path='{Binding Playlists.Count', StringFormat=' {0} Playlists'}}">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Order="Primary" Clicked="Add"></ToolbarItem>
+        <ToolbarItem Text="Add" Order="Primary" Command="{Binding AddPlaylistCommand}"></ToolbarItem>
         <ToolbarItem Text="Del" Order="Secondary"></ToolbarItem>
     </ContentPage.ToolbarItems>
     <StackLayout>
-        <ListView x:Name="ListaPlaylists" 
+        <ListView x:Name="Lista"
                   ItemSelected="ListaPlaylists_ItemSelected" 
+                  SelectedItem="{Binding PlaylistSeleccionada, Mode=TwoWay}"
                   ItemsSource="{Binding Playlists}">
             <ListView.ItemTemplate>
                 <DataTemplate>
